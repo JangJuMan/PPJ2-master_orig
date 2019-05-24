@@ -63,6 +63,10 @@ public class Make_New_file extends AppCompatActivity {
         Button OK = (Button)findViewById(OK_button);
         Button LOAD = (Button)findViewById(btn_debug);
 
+        //13주차 Mainactivity 종료시키기
+        MainActivity MmainActivity = (MainActivity)MainActivity.mainActivity;
+        MmainActivity.finish();
+
         //13주차 : feeling
         final ImageButton feel_good = (ImageButton) findViewById(R.id.good);
         ImageButton feel_bad = (ImageButton) findViewById(R.id.bad);
@@ -114,6 +118,10 @@ public class Make_New_file extends AppCompatActivity {
                 // 12주차 수정(2) : 다시 원래대로
                 FILENAME = String.format("%d.%02d.%02d",mYear, mMonth+1, mDay);
                 save();
+
+                //13주차
+                Intent intent = new Intent(Make_New_file.this, MainActivity.class);
+                startActivity(intent);
 
                 // 12주차 수정 : 뒤로가기 버튼
                 onBackPressed();

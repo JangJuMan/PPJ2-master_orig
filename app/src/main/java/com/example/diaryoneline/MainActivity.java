@@ -1,5 +1,6 @@
 package com.example.diaryoneline;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +30,9 @@ import java.util.Scanner;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //13주차 Mainactivity 종료시키기
+    public static Activity mainActivity;
 
     private Animation fab_open, fab_close;
     private Boolean isFabOpen = false;
@@ -62,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //13주차 Mainactivity 종료시키기
+        mainActivity = MainActivity.this;
+
         //현재 시간 설정
         yearNow = (TextView) findViewById(R.id.yearNow);
         yearNow.setText(nowYear);
@@ -72,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         init();//Month
         init3();//Year
         //리사이클러리스트
+
 
         listview2 = findViewById(R.id.main_listview);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -148,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_searching) {
-            Toast.makeText(this ,"hi",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this ,"hi",Toast.LENGTH_SHORT).show();
             return true;
         }
 
@@ -247,9 +255,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String str =  yearS+"."+monthS+".";
         String str2 ;
         //Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-        String A =" ";
-        String B =" ";
-        String C =" ";
+        String A =" ";//파일이름: 날짜
+        String B =" ";//파일 제목
+        String C =" ";//A+엔터+B //합친 거
         //목표 : 파일 제목을 불러와 A에 저장해서 넣기.
 
         //넣고 싶은 내용.
@@ -259,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             A = fileYN(str2);
             B = findeFile(str2);
             C = A+"\n"+B;
-            Toast.makeText(this, B, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, B, Toast.LENGTH_SHORT).show();
             if (A == "-1" || A == "0") {
             } else {
                 itemList2.add(C);
@@ -279,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v) {
             String str = (String) v.getTag();
-            Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
 
             // 수정하기로 떠나는 것
             Intent intent = new Intent(MainActivity.this, modify.class);
