@@ -4,45 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@android:color/transparent"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <!--'년도'-->
     <TextView
         android:id="@+id/yearNow"
-        android:text="2019"
         android:layout_width="100dp"
         android:layout_height="55dp"
         android:gravity="center"
         android:onClick="onCLickYear"
+        android:text="2019"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
         android:typeface="normal"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
     <!--'|'-->
     <TextView
-        android:text="|"
-        android:layout_marginLeft="95dp"
         android:layout_width="15dp"
         android:layout_height="55dp"
+        android:layout_marginLeft="95dp"
         android:gravity="center"
+        android:text="|"
 
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
         android:typeface="normal"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
     <!--'월'-->
     <TextView
         android:id="@+id/monthNow"
@@ -76,8 +75,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginBottom="381dp"
         android:scrollbars="vertical"
-        android:visibility="invisible">
-    </android.support.v7.widget.RecyclerView>
+        android:visibility="invisible"></android.support.v7.widget.RecyclerView>
 
     <!--'날짜 리스트 month편'-->
     <android.support.v7.widget.RecyclerView
@@ -86,9 +84,9 @@
         android:layout_height="48dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="381dp"
+        android:background="@android:color/holo_green_dark"
         android:scrollbars="vertical"
-        android:visibility="invisible">
-    </android.support.v7.widget.RecyclerView>
+        android:visibility="invisible"></android.support.v7.widget.RecyclerView>
 
 
     <android.support.design.widget.FloatingActionButton
@@ -96,9 +94,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="160dp"
         android:layout_marginRight="15sp"
+        android:layout_marginBottom="160dp"
         android:visibility="invisible"
+        android:src="@android:drawable/ic_menu_manage"
         app:backgroundTint="#ffffff"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp" />
@@ -109,9 +108,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="90dp"
         android:layout_marginRight="15sp"
+        android:layout_marginBottom="90dp"
         android:visibility="invisible"
+        android:src="@android:drawable/ic_input_add"
         app:backgroundTint="#ffffff"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp" />
@@ -122,11 +122,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="15sp"
-        android:backgroundTint="#9500ff"
-        />
-
-
-
+        android:background="@android:color/black"
+        android:backgroundTint="@android:color/darker_gray"
+        android:src="@android:drawable/ic_dialog_dialer"
+        app:backgroundTint="@android:color/darker_gray"
+        app:fabSize="auto" />
 
 
 </FrameLayout>

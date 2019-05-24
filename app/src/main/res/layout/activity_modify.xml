@@ -11,29 +11,58 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <EditText
+            android:id="@+id/Title"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:inputType="textMultiLine"
+            android:lineSpacingExtra="14sp"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:typeface="serif"
+            android:visibility="visible" />
 
 
     </android.support.design.widget.AppBarLayout>
 
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="423dp"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:gravity="top"
         android:inputType="textMultiLine"
         android:lineSpacingExtra="14sp"
-        android:text="~~"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:typeface="serif"
         android:visibility="visible" />
 
-    <include layout="@layout/content_modify" />
+    <Button
+        android:id="@+id/modify"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/modify" />
+
+    <Button
+        android:id="@+id/delete"
+        android:onClick="onClickDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/delete" />
+
+    <Button
+        android:id="@+id/listview"
+        android:onClick="onClickListview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/list" />
 
 </LinearLayout>

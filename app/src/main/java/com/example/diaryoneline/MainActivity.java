@@ -1,6 +1,7 @@
 package com.example.diaryoneline;
 
 import android.app.Activity;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import java.util.Scanner;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     //13주차 Mainactivity 종료시키기
     public static Activity mainActivity;
@@ -260,18 +262,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String C =" ";//A+엔터+B //합친 거
         //목표 : 파일 제목을 불러와 A에 저장해서 넣기.
 
+
+        //2019.01.01
         //넣고 싶은 내용.
         for(int i=1;i<=31;i++) {
-            str2 = str + String.valueOf(i);
+            if(i<10){str2=str +"0"+ String.valueOf(i);}
+            else
+                str2 = str + String.valueOf(i);
 
             A = fileYN(str2);
             B = findeFile(str2);
             C = A+"\n"+B;
-           // Toast.makeText(this, B, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, B, Toast.LENGTH_SHORT).show();
             if (A == "-1" || A == "0") {
             } else {
                 itemList2.add(C);
-
             }
         }
 
@@ -282,17 +287,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listview2.addItemDecoration(decoration2);
     }
 
-    //중간 리스트 누르면
+    //중간 리스트 누르면————————————————13
     private View.OnClickListener onClickItem2 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             String str = (String) v.getTag();
-            //Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+            String[] s = str.split("\n");
 
-            // 수정하기로 떠나는 것
+//             수정하기로 떠나는 것
             Intent intent = new Intent(MainActivity.this, modify.class);
+            intent.putExtra("filename", s[0]);
             startActivity(intent);
-            finish();
+//          13주차 수정내용 ~ intent 오류
         }
     };
 
@@ -392,6 +398,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return "-1";
         }
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
     }
 
 

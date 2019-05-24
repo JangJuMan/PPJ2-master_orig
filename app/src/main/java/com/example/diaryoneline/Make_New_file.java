@@ -30,7 +30,7 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import static com.example.diaryoneline.R.id.OK_button;
-import static com.example.diaryoneline.R.id.btn_debug;
+
 
 
 
@@ -46,8 +46,8 @@ public class Make_New_file extends AppCompatActivity {
     EditText titlename;
     String FILENAME;
     TextView now_feeling;
-    int feeling_good;
-    String today_feel;
+    int feeling_good = 0;
+    String today_feel = "୧( ˵ ° ~ ° ˵ )୨ ";
     String soso = "୧( ˵ ° ~ ° ˵ )୨ ";   //Today, I was just so so :|";
 
     @Override
@@ -58,10 +58,10 @@ public class Make_New_file extends AppCompatActivity {
         // to store
         titlename = (EditText)findViewById(R.id.title);
         edit = (EditText)findViewById(R.id.input);
-        // debug
-        text = (TextView)findViewById(R.id.for_debug);
+
+
         Button OK = (Button)findViewById(OK_button);
-        Button LOAD = (Button)findViewById(btn_debug);
+
 
         //13주차 Mainactivity 종료시키기
         MainActivity MmainActivity = (MainActivity)MainActivity.mainActivity;
@@ -85,7 +85,7 @@ public class Make_New_file extends AppCompatActivity {
 //                    now_feeling.setText(" ⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾");
                     now_feeling.setText("I feel good :)");
                     feeling_good = 1;
-                    today_feel = " ⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾";
+                    today_feel = " ⁽⁽٩(๑ ˃̶͈̀ ᗨ ˂ ̶͈́)۶⁾⁾";
 //                    today_feel = "Today, I was happy :)";
                 }
             }
@@ -129,15 +129,7 @@ public class Make_New_file extends AppCompatActivity {
             }
         });
 
-        LOAD.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                // 12주차 수정 : 파일 로드
-                FILENAME = String.format("%d.%02d.%02d",mYear, mMonth+1, mDay);
-//                FILENAME = String.format("%d.%02d.%02d:%s",mYear, mMonth+1, mDay, titlename.getText().toString());
-                load();
-            }
-        });
+
 
         // set calendar
         mTxtDate = (TextView)findViewById(R.id.date);
@@ -158,7 +150,7 @@ public class Make_New_file extends AppCompatActivity {
 
     private void save(){
         if(FILENAME.isEmpty()){
-            Toast.makeText(this, "Please enter a filename", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Please enter a filename", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -169,12 +161,14 @@ public class Make_New_file extends AppCompatActivity {
             String deli = "\n";
             fos.write(deli.getBytes());
             fos.write(edit.getText().toString().getBytes());
-            deli = "@#@";
+            deli = "\n--------------\nToday's feeling ==>  ";
             fos.write((deli.getBytes()));
             // 13주차 feel
             if(feeling_good == 1 || feeling_good == -1){
+//                Toast.makeText(this, "good or bad", Toast.LENGTH_SHORT).show();
                 fos.write(today_feel.getBytes());
             }else{
+//                Toast.makeText(this, "soso", Toast.LENGTH_SHORT).show();
                 fos.write(soso.getBytes());
             }
 
@@ -184,25 +178,25 @@ public class Make_New_file extends AppCompatActivity {
         }
     }
 
-    private void load(){
-
-        if(FILENAME.isEmpty()) {
-            Toast.makeText(this, "Please enter a filename", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-            // TODO: 로드 버튼으로 파일을 부르려면 파일이름을 다 알아야 해... 뭐 어짜피 안쓸기능이긴 해.
-            FileInputStream fis = openFileInput(FILENAME);
-            Scanner scanner = new Scanner(fis);
-            scanner.useDelimiter("\\Z");
-            String content = scanner.next();
-            scanner.close();
-            edit.setText(FILENAME);
-            text.setText(content);
-        }catch(FileNotFoundException e){
-            Toast.makeText(this, "file not found", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void load(){
+//
+//        if(FILENAME.isEmpty()) {
+//            Toast.makeText(this, "Please enter a filename", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        try {
+//            // TODO: 로드 버튼으로 파일을 부르려면 파일이름을 다 알아야 해... 뭐 어짜피 안쓸기능이긴 해.
+//            FileInputStream fis = openFileInput(FILENAME);
+//            Scanner scanner = new Scanner(fis);
+//            scanner.useDelimiter("\\Z");
+//            String content = scanner.next();
+//            scanner.close();
+//            edit.setText(FILENAME);
+//            text.setText(content);
+//        }catch(FileNotFoundException e){
+//            Toast.makeText(this, "file not found", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
     public void date_clickOn(View v){
@@ -236,6 +230,15 @@ public class Make_New_file extends AppCompatActivity {
         // 12주차 수정(2) : 다시 원래대로
         FILENAME = String.format("%d.%02d.%02d",mYear, mMonth+1, mDay);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this , MainActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
+
+
 }
 
 

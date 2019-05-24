@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".Make_New_file">
 
     <Button
         android:id="@+id/set_date"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="268dp"
-        android:layout_height="68dp"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
         android:background="@android:color/transparent"
         android:onClick="date_clickOn"
+        android:textColorLink="@android:color/background_dark"
+        android:textSize="100sp"
         app:layout_constraintBottom_toBottomOf="@+id/date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,55 +25,62 @@
         android:id="@+id/date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:textSize="25sp"
+        android:textAlignment="center"
         app:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="@+id/set_date"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
+        android:layout_gravity="start" />
 
     <View
         android:id="@+id/divider_h_1"
         android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:background="@android:color/holo_blue_light"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <View
         android:id="@+id/divider_v_1"
-        android:layout_width="2dp"
+        android:layout_width="1dp"
         android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:background="@android:color/holo_blue_light"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:background="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="@+id/divider_h_1"
         app:layout_constraintStart_toEndOf="@+id/date" />
 
     <TextView
         android:id="@+id/Title_view"
-        android:layout_width="97dp"
-        android:layout_height="78dp"
+        android:layout_width="84dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="72dp"
         android:text="Title :"
-        android:textSize="35sp"
+        android:textSize="25sp"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider_h_1" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="266dp"
-        android:layout_height="86dp"
+        android:layout_height="63dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/Title_view"
         app:layout_constraintEnd_toEndOf="parent">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/title"
             android:layout_width="241dp"
-            android:layout_height="wrap_content"
+            android:layout_height="58dp"
+            android:background="@android:color/white"
+            android:textColorLink="@android:color/black"
+            android:textCursorDrawable="@android:color/black"
             android:textSize="26sp" />
     </android.support.design.widget.TextInputLayout>
 
@@ -91,59 +101,40 @@
             android:layout_width="321dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textCursorDrawable="@android:color/black"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/OK_button"
-        android:layout_width="63dp"
-        android:layout_height="wrap_content"
+        android:layout_width="132dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="8dp"
         android:text="OK"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="18sp"
+        android:textColor="@android:color/background_dark"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/divider_h_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/cur_feeling"
         android:layout_width="197dp"
-        android:layout_height="42dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="60dp"
         android:gravity="center_horizontal"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/good"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toEndOf="@+id/bad" />
-
-    <TextView
-        android:id="@+id/for_debug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="NO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_debug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/bad"
@@ -153,22 +144,22 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/good"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_off" />
+        app:srcCompat="@android:drawable/arrow_down_float" />
 
     <ImageButton
         android:id="@+id/good"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@android:drawable/arrow_up_float" />
 
 </android.support.constraint.ConstraintLayout>
