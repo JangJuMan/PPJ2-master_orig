@@ -12,9 +12,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.diaryoneline.R.id;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -29,6 +32,8 @@ import java.util.Scanner;
 import static com.example.diaryoneline.R.id.OK_button;
 import static com.example.diaryoneline.R.id.btn_debug;
 
+
+
 public class Make_New_file extends AppCompatActivity {
 
 
@@ -40,6 +45,10 @@ public class Make_New_file extends AppCompatActivity {
     TextView text;
     EditText titlename;
     String FILENAME;
+    TextView now_feeling;
+    int feeling_good;
+    String today_feel;
+    String soso = "୧( ˵ ° ~ ° ˵ )୨ ";   //Today, I was just so so :|";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,49 @@ public class Make_New_file extends AppCompatActivity {
         text = (TextView)findViewById(R.id.for_debug);
         Button OK = (Button)findViewById(OK_button);
         Button LOAD = (Button)findViewById(btn_debug);
+
+        //13주차 : feeling
+        final ImageButton feel_good = (ImageButton) findViewById(R.id.good);
+        ImageButton feel_bad = (ImageButton) findViewById(R.id.bad);
+        now_feeling = (TextView)findViewById(R.id.cur_feeling);
+
+
+        feel_good.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(feeling_good == 1) {
+                    now_feeling.setText("");  // it means soso.
+                    feeling_good = 0;
+                    today_feel = "୧( ˵ ° ~ ° ˵ )୨ ";    //Today, I was just so so :|";
+                }
+                else{
+//                    now_feeling.setText(" ⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾");
+                    now_feeling.setText("I feel good :)");
+                    feeling_good = 1;
+                    today_feel = " ⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾";
+//                    today_feel = "Today, I was happy :)";
+                }
+            }
+        });
+
+        feel_bad.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(feeling_good == -1) {
+                    now_feeling.setText("");  // it means soso.
+                    feeling_good = 0;
+                    today_feel = "୧( ˵ ° ~ ° ˵ )୨ ";
+//                    today_feel = "Today, I was just so so :|";
+                }else{
+//                    now_feeling.setText("凸ಠ益ಠ)凸");
+                    now_feeling.setText("I feel bad :(");
+                    feeling_good = -1;
+                    today_feel = "▐ ” ⊗ ﹏ ⊗ ”▐";
+//                    today_feel = "Today, I was sad... :(";
+                }
+            }
+        });
+
 
         OK.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -88,10 +140,13 @@ public class Make_New_file extends AppCompatActivity {
         mMonth = cal.get(Calendar.MONTH);
         mDay = cal.get(Calendar.DATE);
 
+
+
         //화면에 텍스트뷰 업데이트하기
         UpdateNow();
 
     }
+
 
     private void save(){
         if(FILENAME.isEmpty()){
@@ -106,6 +161,15 @@ public class Make_New_file extends AppCompatActivity {
             String deli = "\n";
             fos.write(deli.getBytes());
             fos.write(edit.getText().toString().getBytes());
+            deli = "@#@";
+            fos.write((deli.getBytes()));
+            // 13주차 feel
+            if(feeling_good == 1 || feeling_good == -1){
+                fos.write(today_feel.getBytes());
+            }else{
+                fos.write(soso.getBytes());
+            }
+
             fos.close();
         }catch(Exception e){
             Toast.makeText(this, "Exception writing file", Toast.LENGTH_SHORT).show();
